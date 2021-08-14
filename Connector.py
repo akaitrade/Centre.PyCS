@@ -46,6 +46,24 @@ class Connector(object):
             return ClientEx(self.ip.split(':')).WalletGetBalance(base58check.b58decode(PubKey))
         except Exception as e:
             raise e
+    
+    def WalletTransactionsCountGet(self,PubKey):
+        """Description of WalletTransactionsCountGet
+
+            Parameters:
+            PubKey (string): Base58 PublicKey
+
+            Returns:
+            Object:WalletTransactionsCountGetResult
+
+            Detailed Documentation
+
+            https://centr.gitbook.io/netcs/
+            """
+        try: 
+            return ClientEx(self.ip.split(':')).WalletTransactionsCountGet(base58check.b58decode(PubKey))
+        except Exception as e:
+            raise e
 
 
 
