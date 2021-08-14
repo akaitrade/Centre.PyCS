@@ -2,7 +2,7 @@ from api.ttypes import Transaction, TransactionId
 import sys
 from keys import Keys
 from clientex import ClientEx
-
+import base58check
 
 
 
@@ -43,7 +43,7 @@ class Connector(object):
             https://centr.gitbook.io/netcs/
             """
         try: 
-            return ClientEx(self.ip.split(':')).WalletGetBalance(PubKey)
+            return ClientEx(self.ip.split(':')).WalletGetBalance(base58check.b58decode(PubKey))
         except Exception as e:
             raise e
 
