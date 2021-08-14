@@ -65,6 +65,24 @@ class Connector(object):
         except Exception as e:
             raise e
 
+    def WalletDataGet(self,PubKey):
+        """Description of WalletDataGet
+
+            Parameters:
+            PubKey (string): Base58 PublicKey
+
+            Returns:
+            Object:WalletDataGetResult
+
+            Detailed Documentation
+
+            https://centr.gitbook.io/netcs/
+            """
+        try: 
+            return ClientEx(self.ip.split(':')).WalletDataGet(base58check.b58decode(PubKey))
+        except Exception as e:
+            raise e
+
 
 
 

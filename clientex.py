@@ -27,6 +27,9 @@ class ClientEx:
     def WalletTransactionsCountGet(self, pub_key_bytes):
         return self.client.WalletTransactionsCountGet(pub_key_bytes)
 
+    def WalletDataGet(self, pub_key_bytes):
+        return self.client.WalletDataGet(pub_key_bytes)
+
     def TransactionGet(self, transactionid):
         return self.client.TransactionGet(transactionid)    
 
