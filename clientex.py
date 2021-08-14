@@ -30,6 +30,9 @@ class ClientEx:
     def WalletDataGet(self, pub_key_bytes):
         return self.client.WalletDataGet(pub_key_bytes)
 
+    def StatsGet(self):
+        return self.client.StatsGet()
+
     def TransactionGet(self, transactionid):
         return self.client.TransactionGet(transactionid)    
 

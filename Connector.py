@@ -83,6 +83,21 @@ class Connector(object):
         except Exception as e:
             raise e
 
+    def StatsGet(self):
+        """Description of StatsGet
+            NOT IMPLEMENTED YET
+            Returns:
+            Object:StatsGetResult
+
+            Detailed Documentation
+
+            https://centr.gitbook.io/netcs/
+            """
+        try: 
+            return ClientEx(self.ip.split(':')).StatsGet()
+        except Exception as e:
+            raise e
+
 
 
 

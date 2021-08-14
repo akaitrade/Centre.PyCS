@@ -1,7 +1,7 @@
 from Connector import Connector
 
 def main():
-    WalletDataGet()
+    StatsGet()
 
 def TestTransactionGet():
     Connect_ =  Connector("165.22.212.253:9090")
@@ -18,5 +18,9 @@ def WalletTransactionsCountGet():
 def WalletDataGet():
     Connect_ =  Connector("165.22.212.253:9090")
     print(Connect_.WalletDataGet("ACkyon3ERkNEcNwpjUn4S6TLP3L76LFg3X6kWoJx82dK"))
+
+def StatsGet():
+    Connect_ =  Connector("165.22.212.253:9090")
+    print(Connect_.StatsGet())
 
 main()
