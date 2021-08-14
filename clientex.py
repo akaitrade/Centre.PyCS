@@ -36,6 +36,9 @@ class ClientEx:
     def TransactionGet(self, transactionid):
         return self.client.TransactionGet(transactionid)    
 
+    def TransactionsGet(self, address,offset,limit):
+        return self.client.TransactionsGet(address,offset,limit)
+
     def __fee(self, value):
         sign = 0
         if value < 0.0:
@@ -60,13 +63,20 @@ class ClientEx:
         frac = round(value * 1024)
         return sign * 32768 + exp * 1024 + frac
 
-    def transfer_coins(self, integral, fraction, fee, keys):
-        res = self.client.TransactionFlow(self.create_transaction(integral, fraction, fee, keys))
-        print(res)
+    def transfer_coins(self, integral, fraction, fee, keys, userdata, txsid, txs):
+        if(txs != None):
+            return self.client.TransactionFlow(txs)
+        if(userdata != None):
+            return self.client.TransactionFlow(self.create_transaction_userdata(integral, fraction, fee, keys, userdata,txsid))
+        else:
+            return self.client.TransactionFlow(self.create_transaction(integral, fraction, fee, keys, txsid))
 
-    def create_transaction(self, integral, fraction, fee, keys):
+        
+
+
+    def create_transaction(self, integral, fraction, fee, keys, txsid):
         tr = Transaction()
-        tr.id = self.client.WalletTransactionsCountGet(keys.public_key_bytes).lastTransactionInnerId + 1
+        tr.id = txsid
         tr.source = keys.public_key_bytes
         tr.target = keys.target_public_key_bytes
         tr.amount = Amount()
@@ -90,6 +100,39 @@ class ClientEx:
 
         signing_key = ed25519.SigningKey(keys.private_key_bytes)
         sign = signing_key.sign(serial_transaction)
+        tr.signature = sign
+
+        return tr
+
+    def create_transaction_userdata(self, integral, fraction, fee, keys,userdata,txsid):
+        tr = Transaction()
+        tr.id = txsid
+        tr.source = keys.public_key_bytes
+        tr.target = keys.target_public_key_bytes
+        tr.amount = Amount()
+        tr.amount.integral = integral
+        tr.amount.fraction = fraction
+        tr.currency = 1
+        tr.userFields =bytearray(userdata,'utf-8')
+        tr.fee = AmountCommission()
+        tr.fee.commission = self.__fee(fee)
+
+        serial_transaction = pack('=6s32s32slqhbbi',                       # '=' - without alignment'
+                                  bytearray(tr.id.to_bytes(6, 'little')), # 6s - 6 byte InnerID (char[] C Type)
+                                  tr.source,                              # 32s - 32 byte source public key (char[] C Type)
+                                  tr.target,                              # 32s - 32 byte target pyblic key (char[] C Type)
+                                  tr.amount.integral,                     # i - 4 byte integer(int C Type)
+                                  tr.amount.fraction,                     # q - 8 byte integer(long long C Type)
+                                  tr.fee.commission,                      # h - 2 byte integer (short C Type)
+                                  tr.currency,                            # b - 1 byte integer (signed char C Type)
+                                  1,                                       # b - 1 byte userfield_num
+                                  len(tr.userFields)
+        )
+
+        full_serial_transaction = serial_transaction + tr.userFields
+        
+        signing_key = ed25519.SigningKey(keys.private_key_bytes)
+        sign = signing_key.sign(full_serial_transaction)
         tr.signature = sign
 
         return tr
