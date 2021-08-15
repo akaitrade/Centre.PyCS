@@ -25,7 +25,7 @@ https://centr.gitbook.io/netcs
 ## Connector Object
 
 In order to get the library working we first need to initialize the Connector object
-```csharp
+```python
 connect_ = Connector("95.111.224.219:9091");
 ```
 The Connector object needs to have 2 variables the first: IP address of a node running Credits Blockchain and Second: the API port of that particular node.
@@ -34,9 +34,9 @@ The Connector object needs to have 2 variables the first: IP address of a node r
 Retrieving Balance
 --
 For a very easy example we are going to retrieve a Balance of a give wallet address
-```csharp
-var connect_ = new Connector("95.111.224.219", 9091);
-var balance = connect_.balance("4SFfA1S2xfA3BdgkTn2tK14yDhLuD11RVz78kqx35jct");
+```python
+Connect_ =  Connector("165.22.212.253:9090")
+print(Connect_.WalletGetBalance("ACkyon3ERkNEcNwpjUn4S6TLP3L76LFg3X6kWoJx82dK"))
 ```
 With only 2 Lines of code we can now retrieve a balance from the blockchain that easy !
 
