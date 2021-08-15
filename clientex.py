@@ -51,11 +51,65 @@ class ClientEx:
     def TransactionsListGet(self,offset,limit):
         return self.client.TransactionsListGet(offset,limit)
 
-    def PoolListGet(self,offset,limit):
-        return self.client.PoolListGet(offset,limit)
+    def PoolListGetStable(self,sequence,limit):
+        return self.client.PoolListGetStable(sequence,limit)
 
+    def PoolInfoGet(self,offset,limit):
+        return self.client.PoolInfoGet(offset,limit)
+
+    def PoolTransactionsGet(self,sequence,offset,limit):
+        return self.client.PoolTransactionsGet(sequence,offset,limit)
+
+    def SmartContractGet(self,address):
+        return self.client.SmartContractGet(address)
     
+    def SmartContractsListGet(self,deployer,offset,limit):
+        return self.client.SmartContractsListGet(deployer,offset,limit)
 
+    def TransactionsStateGet(self,address,Id):
+        return self.client.TransactionsStateGet(address,Id)
+    
+    def ContractAllMethodsGet(self,bytecodeobjects):
+        return self.client.ContractAllMethodsGet(bytecodeobjects)
+    
+    def SmartMethodParamsGet(self,address,id):
+        return self.client.SmartMethodParamsGet(address,id)
+
+    def SmartContractDataGet(self,address):
+        return self.client.SmartContractDataGet(address)
+
+    def SmartContractCompile(self,sccode):
+        return self.client.SmartContractCompile(sccode)
+
+    def TokenBalancesGet(self,address):
+        return self.client.TokenBalancesGet(address)
+
+    def TokenTransfersGet(self,token,offset,limit):
+        return self.client.TokenTransfersGet(token,offset,limit)
+
+    def TokenTransferGet(self,token,txsid):
+        return self.client.TokenTransferGet(token,txsid)
+
+    def TokenTransfersListGet(self,offset,limit):
+        return self.client.TokenTransfersListGet(offset,limit)
+
+    def TokenWalletTransfersGet(self,token,address,offset,limit):
+        return self.client.TokenWalletTransfersGet(offset,token,address,offset,limit)
+
+    def TokenInfoGet(self,token):
+        return self.client.TokenInfoGet(token)
+
+    def TokenHoldersGet(self,token,order,desc,offset,limit):
+        return self.client.TokenHoldersGet(token,order,desc,offset,limit)
+
+    def TokensListGet(self,order,filters,desc,offset,limit):
+        return self.client.TokensListGet(order,filters,desc,offset,limit)
+
+    def WalletsGet(self,ordcol,desc,offset,limit):
+        return self.client.WalletsGet(ordcol,desc,offset,limit)
+
+    def TrustedGet(self,page):
+        return self.client.TrustedGet(page)
     
 
     def __fee(self, value):
