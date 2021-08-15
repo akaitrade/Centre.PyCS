@@ -54,6 +54,9 @@ class ClientEx:
     def PoolListGetStable(self,sequence,limit):
         return self.client.PoolListGetStable(sequence,limit)
 
+    def PoolListGet(self,offset,limit):
+        return self.client.PoolListGet(offset,limit)
+    
     def PoolInfoGet(self,offset,limit):
         return self.client.PoolInfoGet(offset,limit)
 
