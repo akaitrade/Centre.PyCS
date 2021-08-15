@@ -223,7 +223,7 @@ class Connector(object):
         """Description of PoolListGetStable
 
             Parameters:
-            Sequence (int): Offset number
+            Sequence (int): Sequence/block number
             Limit (int): Limit Amount per request
 
             Returns:
@@ -235,6 +235,158 @@ class Connector(object):
             """
         try: 
             return ClientEx(self.ip.split(':')).PoolListGetStable(Sequence,Limit)
+        except Exception as e:
+            raise e
+
+    def PoolListGet(self, Offset=0, Limit=10):
+        """Description of PoolListGet
+
+            Parameters:
+            Offset (int): Offset number
+            Limit (int): Limit Amount per request
+
+            Returns:
+            Object:PoolListGetResult
+
+            Detailed Documentation
+
+            https://centr.gitbook.io/netcs/
+            """
+        try: 
+            return ClientEx(self.ip.split(':')).PoolListGet(Offset,Limit)
+        except Exception as e:
+            raise e
+
+    def PoolInfoGet(self, Offset=0, Limit=10):
+        """Description of PoolInfoGet
+
+            Parameters:
+            Offset (int): Offset number
+            Limit (int): Limit Amount per request
+
+            Returns:
+            Object:PoolInfoGetResult
+
+            Detailed Documentation
+
+            https://centr.gitbook.io/netcs/
+            """
+        try: 
+            return ClientEx(self.ip.split(':')).PoolInfoGet(Offset,Limit)
+        except Exception as e:
+            raise e
+
+    def PoolTransactionsGet(self, Sequence, Offset=0, Limit=10):
+        """Description of PoolTransactionsGet
+
+            Parameters:
+            Offset (int): Offset number
+            Limit (int): Limit Amount per request
+
+            Returns:
+            Object:PoolTransactionsGetResult
+
+            Detailed Documentation
+
+            https://centr.gitbook.io/netcs/
+            """
+        try: 
+            return ClientEx(self.ip.split(':')).PoolTransactionsGet(Sequence,Offset,Limit)
+        except Exception as e:
+            raise e
+
+    def SmartContractGet(self, Address):
+        """Description of PoolTransactionsGet
+
+            Parameters:
+            Offset (int): Offset number
+            Limit (int): Limit Amount per request
+
+            Returns:
+            Object:PoolTransactionsGetResult
+
+            Detailed Documentation
+
+            https://centr.gitbook.io/netcs/
+            """
+        try: 
+            return ClientEx(self.ip.split(':')).SmartContractGet(base58check.b58decode(Address))
+        except Exception as e:
+            raise e
+
+    def SmartContractsListGet(self, Deployer, Offset=0, Limit=10):
+        """Description of SmartContractsListGet
+
+            Parameters:
+            Offset (int): Offset number
+            Limit (int): Limit Amount per request
+
+            Returns:
+            Object:SmartContractsListGetResult
+
+            Detailed Documentation
+
+            https://centr.gitbook.io/netcs/
+            """
+        try: 
+            return ClientEx(self.ip.split(':')).SmartContractsListGet(base58check.b58decode(Deployer),Offset,Limit)
+        except Exception as e:
+            raise e
+    
+    def TransactionsStateGet(self, Address, Id):
+        """Description of TransactionsStateGet
+
+            Parameters:
+            Offset (int): Offset number
+            Limit (int): Limit Amount per request
+
+            Returns:
+            Object:TransactionsStateGetResult
+
+            Detailed Documentation
+
+            https://centr.gitbook.io/netcs/
+            """
+        try: 
+            return ClientEx(self.ip.split(':')).TransactionsStateGet(base58check.b58decode(Address),Id)
+        except Exception as e:
+            raise e
+
+    def ContractAllMethodsGet(self, byteCodeObjects):
+        """Description of ContractAllMethodsGet
+
+            Parameters:
+            Offset (int): Offset number
+            Limit (int): Limit Amount per request
+
+            Returns:
+            Object:ContractAllMethodsGetResult
+
+            Detailed Documentation
+
+            https://centr.gitbook.io/netcs/
+            """
+        try: 
+            return ClientEx(self.ip.split(':')).ContractAllMethodsGet(byteCodeObjects)
+        except Exception as e:
+            raise e
+
+    def SmartMethodParamsGet(self, Address, Id):
+        """Description of SmartMethodParamsGet
+
+            Parameters:
+            Offset (int): Offset number
+            Limit (int): Limit Amount per request
+
+            Returns:
+            Object:SmartMethodParamsGetResult
+
+            Detailed Documentation
+
+            https://centr.gitbook.io/netcs/
+            """
+        try: 
+            return ClientEx(self.ip.split(':')).SmartMethodParamsGet(base58check.b58decode(Address), Id)
         except Exception as e:
             raise e
 

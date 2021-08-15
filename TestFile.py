@@ -1,7 +1,7 @@
 from Connector import Connector
 
 def main():
-    TransactionsListGet()
+    SmartContractsListGet()
 
 def TestTransactionGet():
     Connect_ =  Connector("165.22.212.253:9090")
@@ -46,5 +46,35 @@ def TransactionsListGet():
 def PoolListGetStable():
     Connect_ =  Connector("165.22.212.253:9090")
     print(Connect_.PoolListGetStable(5500,5))
+
+def PoolListGet():
+    Connect_ =  Connector("165.22.212.253:9090")
+    print(Connect_.PoolListGet(0,5))
+
+def PoolInfoGet():
+    Connect_ =  Connector("165.22.212.253:9090")
+    print(Connect_.PoolInfoGet(0,5))
+
+def PoolTransactionsGet():
+    Connect_ =  Connector("165.22.212.253:9090")
+    print(Connect_.PoolTransactionsGet(544,0,5))
+
+def SmartContractGet():
+    Connect_ =  Connector("165.22.212.253:9090")
+    print(Connect_.SmartContractGet("12DHXQ8rzYUawD6VSD6WuVaTQ4uen7fStWsTmZASnDv1"))
+
+def SmartContractsListGet():
+    Connect_ =  Connector("165.22.212.253:9090")
+    print(Connect_.SmartContractsListGet("EoPibFsGPE4xqXH2tYTBQUeJqSMMFvCZUdqAW9Bnh3nd",0,10))
+
+def TransactionsStateGet():
+    Connect_ =  Connector("165.22.212.253:9090")
+    print(Connect_.TransactionsStateGet("EoPibFsGPE4xqXH2tYTBQUeJqSMMFvCZUdqAW9Bnh3nd",0,10))
+
+def ContractAllMethodsGet():
+    Connect_ =  Connector("165.22.212.253:9090")
+    print(Connect_.ContractAllMethodsGet("EoPibFsGPE4xqXH2tYTBQUeJqSMMFvCZUdqAW9Bnh3nd",0,10))
+
+    
 
 main()
