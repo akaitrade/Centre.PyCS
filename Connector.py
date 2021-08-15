@@ -123,9 +123,15 @@ class Connector(object):
         """Description of SendTransaction
 
             Parameters:
-            PoolSeq (int): BlockNumber
-            Index (int): Transaction number in that block
-
+            Integeral (int): Amount before the .
+            fraction (int): Amount after the .
+            fee (int): Amount fee as maximum
+            PublicKey (string): PublicKey 
+            PrivateKey (string): PrivateKey
+            Target (string): Target Address
+            UserData(byte[]) Optional
+            TxsID(int) Optional
+            Transaction(Transaction) Optional
             Returns:
             Object:TransactionFlowResult
 
@@ -141,6 +147,94 @@ class Connector(object):
             if(TxsID == 0):
                 TxsID = ClientEx(self.ip.split(':')).WalletTransactionsCountGet(keys_.public_key_bytes).lastTransactionInnerId + 1
             return ClientEx(self.ip.split(':')).transfer_coins(Integeral,fraction,fee,keys_,UserData,TxsID,Transaction)
+        except Exception as e:
+            raise e
+
+    def SyncState(self):
+        """Description of SyncState
+            Returns:
+            Object:SyncStateResult
+
+            Detailed Documentation
+
+            https://centr.gitbook.io/netcs/
+            """
+        try: 
+            return ClientEx(self.ip.split(':')).SyncState()
+        except Exception as e:
+            raise e
+
+    def ActualFeeGet(self,TransactionSize):
+        """Description of SyncState
+
+            Parameters:
+            TransactionSize (int): TransactionSize
+
+            Returns:
+            Object:ActualFeeGetResult
+
+            Detailed Documentation
+
+            https://centr.gitbook.io/netcs/
+            """
+        try: 
+            return ClientEx(self.ip.split(':')).ActualFeeGet(TransactionSize)
+        except Exception as e:
+            raise e
+
+    def WalletIdGet(self,Address):
+        """Description of WalletIdGet
+
+            Parameters:
+            Address (string): Address of Wallet
+
+            Returns:
+            Object:WalletIdGetResult
+
+            Detailed Documentation
+
+            https://centr.gitbook.io/netcs/
+            """
+        try: 
+            return ClientEx(self.ip.split(':')).WalletIdGet(base58check.b58decode(Address))
+        except Exception as e:
+            raise e
+
+    def TransactionsListGet(self, OffSet=0, Limit=10):
+        """Description of TransactionsListGet
+
+            Parameters:
+            OffSet (int): Offset number
+            Limit (int): Limit Amount per request
+
+            Returns:
+            Object:TransactionsGetResult
+
+            Detailed Documentation
+
+            https://centr.gitbook.io/netcs/
+            """
+        try: 
+            return ClientEx(self.ip.split(':')).TransactionsListGet(OffSet,Limit)
+        except Exception as e:
+            raise e
+
+    def PoolListGetStable(self, Sequence=0, Limit=10):
+        """Description of PoolListGetStable
+
+            Parameters:
+            Sequence (int): Offset number
+            Limit (int): Limit Amount per request
+
+            Returns:
+            Object:PoolListGetResult
+
+            Detailed Documentation
+
+            https://centr.gitbook.io/netcs/
+            """
+        try: 
+            return ClientEx(self.ip.split(':')).PoolListGetStable(Sequence,Limit)
         except Exception as e:
             raise e
 

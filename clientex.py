@@ -39,6 +39,25 @@ class ClientEx:
     def TransactionsGet(self, address,offset,limit):
         return self.client.TransactionsGet(address,offset,limit)
 
+    def SyncState(self):
+        return self.client.SyncStateGet()
+
+    def ActualFeeGet(self,transactionsize):
+        return self.client.ActualFeeGet(transactionsize)
+    
+    def WalletIdGet(self,adress):
+        return self.client.WalletIdGet(adress)
+    
+    def TransactionsListGet(self,offset,limit):
+        return self.client.TransactionsListGet(offset,limit)
+
+    def PoolListGet(self,offset,limit):
+        return self.client.PoolListGet(offset,limit)
+
+    
+
+    
+
     def __fee(self, value):
         sign = 0
         if value < 0.0:
@@ -70,9 +89,6 @@ class ClientEx:
             return self.client.TransactionFlow(self.create_transaction_userdata(integral, fraction, fee, keys, userdata,txsid))
         else:
             return self.client.TransactionFlow(self.create_transaction(integral, fraction, fee, keys, txsid))
-
-        
-
 
     def create_transaction(self, integral, fraction, fee, keys, txsid):
         tr = Transaction()
