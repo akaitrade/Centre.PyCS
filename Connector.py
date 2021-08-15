@@ -389,6 +389,234 @@ class Connector(object):
             return ClientEx(self.ip.split(':')).SmartMethodParamsGet(base58check.b58decode(Address), Id)
         except Exception as e:
             raise e
+    
+    def SmartContractDataGet(self, Address):
+        """Description of SmartContractDataGet
+
+            Parameters:
+            Offset (int): Offset number
+            Limit (int): Limit Amount per request
+
+            Returns:
+            Object:SmartContractDataResult
+
+            Detailed Documentation
+
+            https://centr.gitbook.io/netcs/
+            """
+        try: 
+            return ClientEx(self.ip.split(':')).SmartContractDataGet(base58check.b58decode(Address))
+        except Exception as e:
+            raise e
+
+    def SmartContractCompile(self, SCcode):
+        """Description of SmartContractCompile
+
+            Parameters:
+            Offset (int): Offset number
+            Limit (int): Limit Amount per request
+
+            Returns:
+            Object:SmartContractCompileResult
+
+            Detailed Documentation
+
+            https://centr.gitbook.io/netcs/
+            """
+        try: 
+            return ClientEx(self.ip.split(':')).SmartContractCompile(SCcode)
+        except Exception as e:
+            raise e
+
+    def TokenBalancesGet(self, Address):
+        """Description of TokenBalancesGet
+
+            Parameters:
+            Offset (int): Offset number
+            Limit (int): Limit Amount per request
+
+            Returns:
+            Object:TokenBalancesResult
+
+            Detailed Documentation
+
+            https://centr.gitbook.io/netcs/
+            """
+        try: 
+            return ClientEx(self.ip.split(':')).TokenBalancesGet(base58check.b58decode(Address))
+        except Exception as e:
+            raise e
+
+    def TokenTransfersGet(self, Token, Offset=0, Limit=0):
+        """Description of TokenTransfersGet
+
+            Parameters:
+            Offset (int): Offset number
+            Limit (int): Limit Amount per request
+
+            Returns:
+            Object:TokenTransfersResult
+
+            Detailed Documentation
+
+            https://centr.gitbook.io/netcs/
+            """
+        try: 
+            return ClientEx(self.ip.split(':')).TokenTransfersGet(base58check.b58decode(Token), Offset, Limit)
+        except Exception as e:
+            raise e
+
+    def TokenTransferGet(self, Token, TxsID):
+        """Description of TokenTransferGet
+
+            Parameters:
+            Offset (int): Offset number
+            Limit (int): Limit Amount per request
+
+            Returns:
+            Object:TokenTransfersResult
+
+            Detailed Documentation
+
+            https://centr.gitbook.io/netcs/
+            """
+        try: 
+            return ClientEx(self.ip.split(':')).TokenTransferGet(base58check.b58decode(Token), TxsID)
+        except Exception as e:
+            raise e
+        
+    def TokenTransfersListGet(self, Offset=0, Limit=0):
+        """Description of TokenTransfersListGet
+
+            Parameters:
+            Offset (int): Offset number
+            Limit (int): Limit Amount per request
+
+            Returns:
+            Object:TokenTransfersResult
+
+            Detailed Documentation
+
+            https://centr.gitbook.io/netcs/
+            """
+        try: 
+            return ClientEx(self.ip.split(':')).TokenTransfersListGet(Offset,Limit)
+        except Exception as e:
+            raise e
+
+    def TokenWalletTransfersGet(self, Token, Address, Offset=0, Limit=0):
+        """Description of TokenWalletTransfersGet
+
+            Parameters:
+            Offset (int): Offset number
+            Limit (int): Limit Amount per request
+
+            Returns:
+            Object:TokenTransfersResult
+
+            Detailed Documentation
+
+            https://centr.gitbook.io/netcs/
+            """
+        try: 
+            return ClientEx(self.ip.split(':')).TokenWalletTransfersGet(base58check.b58decode(Token),base58check.b58decode(Address),Offset,Limit)
+        except Exception as e:
+            raise e
+
+    def TokenInfoGet(self, Token):
+        """Description of TokenInfoGet
+
+            Parameters:
+            Offset (int): Offset number
+            Limit (int): Limit Amount per request
+
+            Returns:
+            Object:TokenInfoResult
+
+            Detailed Documentation
+
+            https://centr.gitbook.io/netcs/
+            """
+        try: 
+            return ClientEx(self.ip.split(':')).TokenInfoGet(base58check.b58decode(Token))
+        except Exception as e:
+            raise e
+
+    def TokenHoldersGet(self, Token, Order, Desc, Offset=0, Limit=0):
+        """Description of TokenHoldersGet
+
+            Parameters:
+            Offset (int): Offset number
+            Limit (int): Limit Amount per request
+
+            Returns:
+            Object:TokenHoldersResult
+
+            Detailed Documentation
+
+            https://centr.gitbook.io/netcs/
+            """
+        try: 
+            return ClientEx(self.ip.split(':')).TokenHoldersGet(base58check.b58decode(Token), Order, Desc, Offset, Limit)
+        except Exception as e:
+            raise e
+
+    def TokensListGet(self, Order, Filters, Desc, Offset=0, Limit=10):
+        """Description of TokensListGet
+
+            Parameters:
+            Offset (int): Offset number
+            Limit (int): Limit Amount per request
+
+            Returns:
+            Object:TokensListResult
+
+            Detailed Documentation
+
+            https://centr.gitbook.io/netcs/
+            """
+        try: 
+            return ClientEx(self.ip.split(':')).TokensListGet(Order, Filters, Desc, Offset,Limit)
+        except Exception as e:
+            raise e
+
+    def WalletsGet(self, OrdCol, Desc, Offset=0, Limit=10):
+        """Description of WalletsGet
+
+            Parameters:
+            Offset (int): Offset number
+            Limit (int): Limit Amount per request
+
+            Returns:
+            Object:WalletsGetResult
+
+            Detailed Documentation
+
+            https://centr.gitbook.io/netcs/
+            """
+        try: 
+            return ClientEx(self.ip.split(':')).WalletsGet(OrdCol, Desc, Offset,Limit)
+        except Exception as e:
+            raise e
+
+    def TrustedGet(self, Page):
+        """Description of WalletsGet
+
+            Parameters:
+            Offset (int): Offset number
+            Limit (int): Limit Amount per request
+
+            Returns:
+            Object:TrustedGetResult
+
+            Detailed Documentation
+
+            https://centr.gitbook.io/netcs/
+            """
+        try: 
+            return ClientEx(self.ip.split(':')).TrustedGet(Page)
+        except Exception as e:
+            raise e
 
 
 
