@@ -11,8 +11,10 @@ from thrift.protocol.TProtocol import TProtocolException
 from thrift.TRecursive import fix_spec
 
 import sys
-import general.ttypes
-
+#from pycs import general
+#import general.ttypes
+#from pycs import general
+from pycs.general.ttypes import *
 from thrift.transport import TTransport
 all_structs = []
 
@@ -349,7 +351,7 @@ class SmartContractDeploy(object):
                     self.byteCodeObjects = []
                     (_etype3, _size0) = iprot.readListBegin()
                     for _i4 in range(_size0):
-                        _elem5 = general.ttypes.ByteCodeObject()
+                        _elem5 = ByteCodeObject()
                         _elem5.read(iprot)
                         self.byteCodeObjects.append(_elem5)
                     iprot.readListEnd()
@@ -567,7 +569,7 @@ class SmartContractInvocation(object):
                     self.params = []
                     (_etype10, _size7) = iprot.readListBegin()
                     for _i11 in range(_size7):
-                        _elem12 = general.ttypes.Variant()
+                        _elem12 = Variant()
                         _elem12.read(iprot)
                         self.params.append(_elem12)
                     iprot.readListEnd()
@@ -1056,7 +1058,7 @@ class SmartExecutionTransInfo(object):
                     self.params = []
                     (_etype24, _size21) = iprot.readListBegin()
                     for _i25 in range(_size21):
-                        _elem26 = general.ttypes.Variant()
+                        _elem26 = Variant()
                         _elem26.read(iprot)
                         self.params.append(_elem26)
                     iprot.readListEnd()
@@ -1146,7 +1148,7 @@ class ExtraFee(object):
                 break
             if fid == 1:
                 if ftype == TType.STRUCT:
-                    self.sum = general.ttypes.Amount()
+                    self.sum = Amount()
                     self.sum.read(iprot)
                 else:
                     iprot.skip(ftype)
@@ -1234,13 +1236,13 @@ class SmartStateTransInfo(object):
                     iprot.skip(ftype)
             elif fid == 2:
                 if ftype == TType.STRUCT:
-                    self.executionFee = general.ttypes.Amount()
+                    self.executionFee = Amount()
                     self.executionFee.read(iprot)
                 else:
                     iprot.skip(ftype)
             elif fid == 3:
                 if ftype == TType.STRUCT:
-                    self.returnValue = general.ttypes.Variant()
+                    self.returnValue = Variant()
                     self.returnValue.read(iprot)
                 else:
                     iprot.skip(ftype)
@@ -1467,13 +1469,13 @@ class Transaction(object):
                     iprot.skip(ftype)
             elif fid == 4:
                 if ftype == TType.STRUCT:
-                    self.amount = general.ttypes.Amount()
+                    self.amount = Amount()
                     self.amount.read(iprot)
                 else:
                     iprot.skip(ftype)
             elif fid == 5:
                 if ftype == TType.STRUCT:
-                    self.balance = general.ttypes.Amount()
+                    self.balance = Amount()
                     self.balance.read(iprot)
                 else:
                     iprot.skip(ftype)
@@ -1768,7 +1770,7 @@ class ShortTransaction(object):
                     iprot.skip(ftype)
             elif fid == 4:
                 if ftype == TType.STRUCT:
-                    self.amount = general.ttypes.Amount()
+                    self.amount = Amount()
                     self.amount.read(iprot)
                 else:
                     iprot.skip(ftype)
@@ -1932,7 +1934,7 @@ class Pool(object):
                     iprot.skip(ftype)
             elif fid == 7:
                 if ftype == TType.STRUCT:
-                    self.totalFee = general.ttypes.Amount()
+                    self.totalFee = Amount()
                     self.totalFee.read(iprot)
                 else:
                     iprot.skip(ftype)
@@ -2058,7 +2060,7 @@ class DelegatedItem(object):
                     iprot.skip(ftype)
             elif fid == 2:
                 if ftype == TType.STRUCT:
-                    self.sum = general.ttypes.Amount()
+                    self.sum = Amount()
                     self.sum.read(iprot)
                 else:
                     iprot.skip(ftype)
@@ -2135,13 +2137,13 @@ class Delegated(object):
                 break
             if fid == 1:
                 if ftype == TType.STRUCT:
-                    self.incoming = general.ttypes.Amount()
+                    self.incoming = Amount()
                     self.incoming.read(iprot)
                 else:
                     iprot.skip(ftype)
             elif fid == 2:
                 if ftype == TType.STRUCT:
-                    self.outgoing = general.ttypes.Amount()
+                    self.outgoing = Amount()
                     self.outgoing.read(iprot)
                 else:
                     iprot.skip(ftype)
@@ -2250,7 +2252,7 @@ class WalletData(object):
                     iprot.skip(ftype)
             elif fid == 2:
                 if ftype == TType.STRUCT:
-                    self.balance = general.ttypes.Amount()
+                    self.balance = Amount()
                     self.balance.read(iprot)
                 else:
                     iprot.skip(ftype)
@@ -2456,7 +2458,7 @@ class WalletDataGetResult(object):
                 break
             if fid == 1:
                 if ftype == TType.STRUCT:
-                    self.status = general.ttypes.APIResponse()
+                    self.status = APIResponse()
                     self.status.read(iprot)
                 else:
                     iprot.skip(ftype)
@@ -2526,7 +2528,7 @@ class WalletIdGetResult(object):
                 break
             if fid == 1:
                 if ftype == TType.STRUCT:
-                    self.status = general.ttypes.APIResponse()
+                    self.status = APIResponse()
                     self.status.read(iprot)
                 else:
                     iprot.skip(ftype)
@@ -2595,7 +2597,7 @@ class WalletTransactionsCountGetResult(object):
                 break
             if fid == 1:
                 if ftype == TType.STRUCT:
-                    self.status = general.ttypes.APIResponse()
+                    self.status = APIResponse()
                     self.status.read(iprot)
                 else:
                     iprot.skip(ftype)
@@ -2666,13 +2668,13 @@ class WalletBalanceGetResult(object):
                 break
             if fid == 1:
                 if ftype == TType.STRUCT:
-                    self.status = general.ttypes.APIResponse()
+                    self.status = APIResponse()
                     self.status.read(iprot)
                 else:
                     iprot.skip(ftype)
             elif fid == 2:
                 if ftype == TType.STRUCT:
-                    self.balance = general.ttypes.Amount()
+                    self.balance = Amount()
                     self.balance.read(iprot)
                 else:
                     iprot.skip(ftype)
@@ -2752,7 +2754,7 @@ class TransactionGetResult(object):
                 break
             if fid == 1:
                 if ftype == TType.STRUCT:
-                    self.status = general.ttypes.APIResponse()
+                    self.status = APIResponse()
                     self.status.read(iprot)
                 else:
                     iprot.skip(ftype)
@@ -2853,7 +2855,7 @@ class TransactionsGetResult(object):
                 break
             if fid == 1:
                 if ftype == TType.STRUCT:
-                    self.status = general.ttypes.APIResponse()
+                    self.status = APIResponse()
                     self.status.read(iprot)
                 else:
                     iprot.skip(ftype)
@@ -2957,13 +2959,13 @@ class TransactionFlowResult(object):
                 break
             if fid == 1:
                 if ftype == TType.STRUCT:
-                    self.status = general.ttypes.APIResponse()
+                    self.status = APIResponse()
                     self.status.read(iprot)
                 else:
                     iprot.skip(ftype)
             elif fid == 2:
                 if ftype == TType.STRUCT:
-                    self.smart_contract_result = general.ttypes.Variant()
+                    self.smart_contract_result = Variant()
                     self.smart_contract_result.read(iprot)
                 else:
                     iprot.skip(ftype)
@@ -2980,7 +2982,7 @@ class TransactionFlowResult(object):
                     iprot.skip(ftype)
             elif fid == 5:
                 if ftype == TType.STRUCT:
-                    self.fee = general.ttypes.Amount()
+                    self.fee = Amount()
                     self.fee.read(iprot)
                 else:
                     iprot.skip(ftype)
@@ -3505,7 +3507,7 @@ class FilteredTransactionsListResult(object):
                 break
             if fid == 1:
                 if ftype == TType.STRUCT:
-                    self.status = general.ttypes.APIResponse()
+                    self.status = APIResponse()
                     self.status.read(iprot)
                 else:
                     iprot.skip(ftype)
@@ -3587,7 +3589,7 @@ class PoolListGetResult(object):
                 break
             if fid == 1:
                 if ftype == TType.STRUCT:
-                    self.status = general.ttypes.APIResponse()
+                    self.status = APIResponse()
                     self.status.read(iprot)
                 else:
                     iprot.skip(ftype)
@@ -3685,7 +3687,7 @@ class PoolInfoGetResult(object):
                 break
             if fid == 1:
                 if ftype == TType.STRUCT:
-                    self.status = general.ttypes.APIResponse()
+                    self.status = APIResponse()
                     self.status.read(iprot)
                 else:
                     iprot.skip(ftype)
@@ -3764,7 +3766,7 @@ class PoolTransactionsGetResult(object):
                 break
             if fid == 1:
                 if ftype == TType.STRUCT:
-                    self.status = general.ttypes.APIResponse()
+                    self.status = APIResponse()
                     self.status.read(iprot)
                 else:
                     iprot.skip(ftype)
@@ -3842,7 +3844,7 @@ class StatsGetResult(object):
                 break
             if fid == 1:
                 if ftype == TType.STRUCT:
-                    self.status = general.ttypes.APIResponse()
+                    self.status = APIResponse()
                     self.status.read(iprot)
                 else:
                     iprot.skip(ftype)
@@ -3920,7 +3922,7 @@ class SmartContractGetResult(object):
                 break
             if fid == 1:
                 if ftype == TType.STRUCT:
-                    self.status = general.ttypes.APIResponse()
+                    self.status = APIResponse()
                     self.status.read(iprot)
                 else:
                     iprot.skip(ftype)
@@ -3990,7 +3992,7 @@ class SmartContractAddressesListGetResult(object):
                 break
             if fid == 1:
                 if ftype == TType.STRUCT:
-                    self.status = general.ttypes.APIResponse()
+                    self.status = APIResponse()
                     self.status.read(iprot)
                 else:
                     iprot.skip(ftype)
@@ -4069,7 +4071,7 @@ class SmartContractsListGetResult(object):
                 break
             if fid == 1:
                 if ftype == TType.STRUCT:
-                    self.status = general.ttypes.APIResponse()
+                    self.status = APIResponse()
                     self.status.read(iprot)
                 else:
                     iprot.skip(ftype)
@@ -4158,7 +4160,7 @@ class TransactionsStateGetResult(object):
                 break
             if fid == 1:
                 if ftype == TType.STRUCT:
-                    self.status = general.ttypes.APIResponse()
+                    self.status = APIResponse()
                     self.status.read(iprot)
                 else:
                     iprot.skip(ftype)
@@ -4248,7 +4250,7 @@ class SmartMethodParamsGetResult(object):
                 break
             if fid == 1:
                 if ftype == TType.STRUCT:
-                    self.status = general.ttypes.APIResponse()
+                    self.status = APIResponse()
                     self.status.read(iprot)
                 else:
                     iprot.skip(ftype)
@@ -4262,7 +4264,7 @@ class SmartMethodParamsGetResult(object):
                     self.params = []
                     (_etype175, _size172) = iprot.readListBegin()
                     for _i176 in range(_size172):
-                        _elem177 = general.ttypes.Variant()
+                        _elem177 = Variant()
                         _elem177.read(iprot)
                         self.params.append(_elem177)
                     iprot.readListEnd()
@@ -4350,7 +4352,7 @@ class ContractAllMethodsGetResult(object):
                     self.methods = []
                     (_etype182, _size179) = iprot.readListBegin()
                     for _i183 in range(_size179):
-                        _elem184 = general.ttypes.MethodDescription()
+                        _elem184 = MethodDescription()
                         _elem184.read(iprot)
                         self.methods.append(_elem184)
                     iprot.readListEnd()
@@ -4581,7 +4583,7 @@ class SmartContractDataResult(object):
                 break
             if fid == 1:
                 if ftype == TType.STRUCT:
-                    self.status = general.ttypes.APIResponse()
+                    self.status = APIResponse()
                     self.status.read(iprot)
                 else:
                     iprot.skip(ftype)
@@ -4602,7 +4604,7 @@ class SmartContractDataResult(object):
                     (_ktype200, _vtype201, _size199) = iprot.readMapBegin()
                     for _i203 in range(_size199):
                         _key204 = iprot.readString().decode('utf-8') if sys.version_info[0] == 2 else iprot.readString()
-                        _val205 = general.ttypes.Variant()
+                        _val205 = Variant()
                         _val205.read(iprot)
                         self.variables[_key204] = _val205
                     iprot.readMapEnd()
@@ -4681,7 +4683,7 @@ class SmartContractCompileResult(object):
                 break
             if fid == 1:
                 if ftype == TType.STRUCT:
-                    self.status = general.ttypes.APIResponse()
+                    self.status = APIResponse()
                     self.status.read(iprot)
                 else:
                     iprot.skip(ftype)
@@ -4690,7 +4692,7 @@ class SmartContractCompileResult(object):
                     self.byteCodeObjects = []
                     (_etype212, _size209) = iprot.readListBegin()
                     for _i213 in range(_size209):
-                        _elem214 = general.ttypes.ByteCodeObject()
+                        _elem214 = ByteCodeObject()
                         _elem214.read(iprot)
                         self.byteCodeObjects.append(_elem214)
                     iprot.readListEnd()
@@ -4952,7 +4954,7 @@ class TokenTransaction(object):
                     self.params = []
                     (_etype219, _size216) = iprot.readListBegin()
                     for _i220 in range(_size216):
-                        _elem221 = general.ttypes.Variant()
+                        _elem221 = Variant()
                         _elem221.read(iprot)
                         self.params.append(_elem221)
                     iprot.readListEnd()
@@ -5226,7 +5228,7 @@ class TokenBalancesResult(object):
                 break
             if fid == 1:
                 if ftype == TType.STRUCT:
-                    self.status = general.ttypes.APIResponse()
+                    self.status = APIResponse()
                     self.status.read(iprot)
                 else:
                     iprot.skip(ftype)
@@ -5495,7 +5497,7 @@ class TokenTransfersResult(object):
                 break
             if fid == 1:
                 if ftype == TType.STRUCT:
-                    self.status = general.ttypes.APIResponse()
+                    self.status = APIResponse()
                     self.status.read(iprot)
                 else:
                     iprot.skip(ftype)
@@ -5584,7 +5586,7 @@ class TokenTransactionsResult(object):
                 break
             if fid == 1:
                 if ftype == TType.STRUCT:
-                    self.status = general.ttypes.APIResponse()
+                    self.status = APIResponse()
                     self.status.read(iprot)
                 else:
                     iprot.skip(ftype)
@@ -5671,7 +5673,7 @@ class TokenInfoResult(object):
                 break
             if fid == 1:
                 if ftype == TType.STRUCT:
-                    self.status = general.ttypes.APIResponse()
+                    self.status = APIResponse()
                     self.status.read(iprot)
                 else:
                     iprot.skip(ftype)
@@ -5743,7 +5745,7 @@ class TokenHoldersResult(object):
                 break
             if fid == 1:
                 if ftype == TType.STRUCT:
-                    self.status = general.ttypes.APIResponse()
+                    self.status = APIResponse()
                     self.status.read(iprot)
                 else:
                     iprot.skip(ftype)
@@ -5832,7 +5834,7 @@ class TokensListResult(object):
                 break
             if fid == 1:
                 if ftype == TType.STRUCT:
-                    self.status = general.ttypes.APIResponse()
+                    self.status = APIResponse()
                     self.status.read(iprot)
                 else:
                     iprot.skip(ftype)
@@ -5930,7 +5932,7 @@ class WalletInfo(object):
                     iprot.skip(ftype)
             elif fid == 2:
                 if ftype == TType.STRUCT:
-                    self.balance = general.ttypes.Amount()
+                    self.balance = Amount()
                     self.balance.read(iprot)
                 else:
                     iprot.skip(ftype)
@@ -6082,7 +6084,7 @@ class WalletsGetResult(object):
                 break
             if fid == 1:
                 if ftype == TType.STRUCT:
-                    self.status = general.ttypes.APIResponse()
+                    self.status = APIResponse()
                     self.status.read(iprot)
                 else:
                     iprot.skip(ftype)
@@ -6188,7 +6190,7 @@ class TrustedInfo(object):
                     iprot.skip(ftype)
             elif fid == 4:
                 if ftype == TType.STRUCT:
-                    self.feeCollected = general.ttypes.Amount()
+                    self.feeCollected = Amount()
                     self.feeCollected.read(iprot)
                 else:
                     iprot.skip(ftype)
@@ -6262,7 +6264,7 @@ class TrustedGetResult(object):
                 break
             if fid == 1:
                 if ftype == TType.STRUCT:
-                    self.status = general.ttypes.APIResponse()
+                    self.status = APIResponse()
                     self.status.read(iprot)
                 else:
                     iprot.skip(ftype)
@@ -6351,7 +6353,7 @@ class SyncStateResult(object):
                 break
             if fid == 1:
                 if ftype == TType.STRUCT:
-                    self.status = general.ttypes.APIResponse()
+                    self.status = APIResponse()
                     self.status.read(iprot)
                 else:
                     iprot.skip(ftype)
@@ -6429,7 +6431,7 @@ class ExecuteCountGetResult(object):
                 break
             if fid == 1:
                 if ftype == TType.STRUCT:
-                    self.status = general.ttypes.APIResponse()
+                    self.status = APIResponse()
                     self.status.read(iprot)
                 else:
                     iprot.skip(ftype)
@@ -6566,7 +6568,7 @@ all_structs.append(SmartContractDeploy)
 SmartContractDeploy.thrift_spec = (
     None,  # 0
     (1, TType.STRING, 'sourceCode', 'UTF8', None, ),  # 1
-    (2, TType.LIST, 'byteCodeObjects', (TType.STRUCT, [general.ttypes.ByteCodeObject, None], False), None, ),  # 2
+    (2, TType.LIST, 'byteCodeObjects', (TType.STRUCT, [ByteCodeObject, None], False), None, ),  # 2
     (3, TType.STRING, 'hashState', 'UTF8', None, ),  # 3
     (4, TType.I32, 'tokenStandard', None, None, ),  # 4
 )
@@ -6584,7 +6586,7 @@ all_structs.append(SmartContractInvocation)
 SmartContractInvocation.thrift_spec = (
     None,  # 0
     (1, TType.STRING, 'method', 'UTF8', None, ),  # 1
-    (2, TType.LIST, 'params', (TType.STRUCT, [general.ttypes.Variant, None], False), None, ),  # 2
+    (2, TType.LIST, 'params', (TType.STRUCT, [Variant, None], False), None, ),  # 2
     (3, TType.LIST, 'usedContracts', (TType.STRING, 'BINARY', False), None, ),  # 3
     (4, TType.BOOL, 'forgetNewState', None, None, ),  # 4
     (5, TType.STRUCT, 'smartContractDeploy', [SmartContractDeploy, None], None, ),  # 5
@@ -6626,14 +6628,14 @@ all_structs.append(SmartExecutionTransInfo)
 SmartExecutionTransInfo.thrift_spec = (
     None,  # 0
     (1, TType.STRING, 'method', 'UTF8', None, ),  # 1
-    (2, TType.LIST, 'params', (TType.STRUCT, [general.ttypes.Variant, None], False), None, ),  # 2
+    (2, TType.LIST, 'params', (TType.STRUCT, [Variant, None], False), None, ),  # 2
     (3, TType.I32, 'state', None, None, ),  # 3
     (4, TType.STRUCT, 'stateTransaction', [TransactionId, None], None, ),  # 4
 )
 all_structs.append(ExtraFee)
 ExtraFee.thrift_spec = (
     None,  # 0
-    (1, TType.STRUCT, 'sum', [general.ttypes.Amount, None], None, ),  # 1
+    (1, TType.STRUCT, 'sum', [Amount, None], None, ),  # 1
     (2, TType.STRING, 'comment', 'UTF8', None, ),  # 2
     (3, TType.STRUCT, 'transactionId', [TransactionId, None], None, ),  # 3
 )
@@ -6641,8 +6643,8 @@ all_structs.append(SmartStateTransInfo)
 SmartStateTransInfo.thrift_spec = (
     None,  # 0
     (1, TType.BOOL, 'success', None, None, ),  # 1
-    (2, TType.STRUCT, 'executionFee', [general.ttypes.Amount, None], None, ),  # 2
-    (3, TType.STRUCT, 'returnValue', [general.ttypes.Variant, None], None, ),  # 3
+    (2, TType.STRUCT, 'executionFee', [Amount, None], None, ),  # 2
+    (3, TType.STRUCT, 'returnValue', [Variant, None], None, ),  # 3
     (4, TType.STRUCT, 'startTransaction', [TransactionId, None], None, ),  # 4
 )
 all_structs.append(SmartTransInfo)
@@ -6660,8 +6662,8 @@ Transaction.thrift_spec = (
     (1, TType.I64, 'id', None, None, ),  # 1
     (2, TType.STRING, 'source', 'BINARY', None, ),  # 2
     (3, TType.STRING, 'target', 'BINARY', None, ),  # 3
-    (4, TType.STRUCT, 'amount', [general.ttypes.Amount, None], None, ),  # 4
-    (5, TType.STRUCT, 'balance', [general.ttypes.Amount, None], None, ),  # 5
+    (4, TType.STRUCT, 'amount', [Amount, None], None, ),  # 4
+    (5, TType.STRUCT, 'balance', [Amount, None], None, ),  # 5
     (6, TType.BYTE, 'currency', None, None, ),  # 6
     (7, TType.STRING, 'signature', 'BINARY', None, ),  # 7
     (8, TType.STRUCT, 'smartContract', [SmartContractInvocation, None], None, ),  # 8
@@ -6686,7 +6688,7 @@ ShortTransaction.thrift_spec = (
     (1, TType.STRUCT, 'id', [TransactionId, None], None, ),  # 1
     (2, TType.STRING, 'source', 'BINARY', None, ),  # 2
     (3, TType.STRING, 'target', 'BINARY', None, ),  # 3
-    (4, TType.STRUCT, 'amount', [general.ttypes.Amount, None], None, ),  # 4
+    (4, TType.STRUCT, 'amount', [Amount, None], None, ),  # 4
     (5, TType.STRUCT, 'fee', [AmountCommission, None], None, ),  # 5
     (6, TType.I64, 'timeCreation', None, None, ),  # 6
     (7, TType.BYTE, 'currency', None, None, ),  # 7
@@ -6703,7 +6705,7 @@ Pool.thrift_spec = (
     (4, TType.I32, 'transactionsCount', None, None, ),  # 4
     (5, TType.I64, 'poolNumber', None, None, ),  # 5
     (6, TType.STRING, 'writer', 'BINARY', None, ),  # 6
-    (7, TType.STRUCT, 'totalFee', [general.ttypes.Amount, None], None, ),  # 7
+    (7, TType.STRUCT, 'totalFee', [Amount, None], None, ),  # 7
     (8, TType.LIST, 'confidants', (TType.STRING, 'BINARY', False), None, ),  # 8
     (9, TType.I64, 'realTrusted', None, None, ),  # 9
     (10, TType.BYTE, 'numberTrusted', None, None, ),  # 10
@@ -6712,14 +6714,14 @@ all_structs.append(DelegatedItem)
 DelegatedItem.thrift_spec = (
     None,  # 0
     (1, TType.STRING, 'wallet', 'BINARY', None, ),  # 1
-    (2, TType.STRUCT, 'sum', [general.ttypes.Amount, None], None, ),  # 2
+    (2, TType.STRUCT, 'sum', [Amount, None], None, ),  # 2
     (3, TType.I64, 'validUntil', None, None, ),  # 3
 )
 all_structs.append(Delegated)
 Delegated.thrift_spec = (
     None,  # 0
-    (1, TType.STRUCT, 'incoming', [general.ttypes.Amount, None], None, ),  # 1
-    (2, TType.STRUCT, 'outgoing', [general.ttypes.Amount, None], None, ),  # 2
+    (1, TType.STRUCT, 'incoming', [Amount, None], None, ),  # 1
+    (2, TType.STRUCT, 'outgoing', [Amount, None], None, ),  # 2
     (3, TType.LIST, 'donors', (TType.STRUCT, [DelegatedItem, None], False), None, ),  # 3
     (4, TType.LIST, 'recipients', (TType.STRUCT, [DelegatedItem, None], False), None, ),  # 4
 )
@@ -6727,7 +6729,7 @@ all_structs.append(WalletData)
 WalletData.thrift_spec = (
     None,  # 0
     (1, TType.I32, 'walletId', None, None, ),  # 1
-    (2, TType.STRUCT, 'balance', [general.ttypes.Amount, None], None, ),  # 2
+    (2, TType.STRUCT, 'balance', [Amount, None], None, ),  # 2
     (3, TType.I64, 'lastTransactionId', None, None, ),  # 3
     (4, TType.STRUCT, 'delegated', [Delegated, None], None, ),  # 4
 )
@@ -6744,32 +6746,32 @@ PeriodStats.thrift_spec = (
 all_structs.append(WalletDataGetResult)
 WalletDataGetResult.thrift_spec = (
     None,  # 0
-    (1, TType.STRUCT, 'status', [general.ttypes.APIResponse, None], None, ),  # 1
+    (1, TType.STRUCT, 'status', [APIResponse, None], None, ),  # 1
     (2, TType.STRUCT, 'walletData', [WalletData, None], None, ),  # 2
 )
 all_structs.append(WalletIdGetResult)
 WalletIdGetResult.thrift_spec = (
     None,  # 0
-    (1, TType.STRUCT, 'status', [general.ttypes.APIResponse, None], None, ),  # 1
+    (1, TType.STRUCT, 'status', [APIResponse, None], None, ),  # 1
     (2, TType.I32, 'walletId', None, None, ),  # 2
 )
 all_structs.append(WalletTransactionsCountGetResult)
 WalletTransactionsCountGetResult.thrift_spec = (
     None,  # 0
-    (1, TType.STRUCT, 'status', [general.ttypes.APIResponse, None], None, ),  # 1
+    (1, TType.STRUCT, 'status', [APIResponse, None], None, ),  # 1
     (2, TType.I64, 'lastTransactionInnerId', None, None, ),  # 2
 )
 all_structs.append(WalletBalanceGetResult)
 WalletBalanceGetResult.thrift_spec = (
     None,  # 0
-    (1, TType.STRUCT, 'status', [general.ttypes.APIResponse, None], None, ),  # 1
-    (2, TType.STRUCT, 'balance', [general.ttypes.Amount, None], None, ),  # 2
+    (1, TType.STRUCT, 'status', [APIResponse, None], None, ),  # 1
+    (2, TType.STRUCT, 'balance', [Amount, None], None, ),  # 2
     (3, TType.STRUCT, 'delegated', [Delegated, None], None, ),  # 3
 )
 all_structs.append(TransactionGetResult)
 TransactionGetResult.thrift_spec = (
     None,  # 0
-    (1, TType.STRUCT, 'status', [general.ttypes.APIResponse, None], None, ),  # 1
+    (1, TType.STRUCT, 'status', [APIResponse, None], None, ),  # 1
     (2, TType.BOOL, 'found', None, None, ),  # 2
     (3, TType.I32, 'state', None, None, ),  # 3
     (4, TType.I32, 'roundNum', None, None, ),  # 4
@@ -6778,7 +6780,7 @@ TransactionGetResult.thrift_spec = (
 all_structs.append(TransactionsGetResult)
 TransactionsGetResult.thrift_spec = (
     None,  # 0
-    (1, TType.STRUCT, 'status', [general.ttypes.APIResponse, None], None, ),  # 1
+    (1, TType.STRUCT, 'status', [APIResponse, None], None, ),  # 1
     (2, TType.BOOL, 'result', None, None, ),  # 2
     (3, TType.I32, 'total_trxns_count', None, None, ),  # 3
     (4, TType.LIST, 'transactions', (TType.STRUCT, [SealedTransaction, None], False), None, ),  # 4
@@ -6786,11 +6788,11 @@ TransactionsGetResult.thrift_spec = (
 all_structs.append(TransactionFlowResult)
 TransactionFlowResult.thrift_spec = (
     None,  # 0
-    (1, TType.STRUCT, 'status', [general.ttypes.APIResponse, None], None, ),  # 1
-    (2, TType.STRUCT, 'smart_contract_result', [general.ttypes.Variant, None], None, ),  # 2
+    (1, TType.STRUCT, 'status', [APIResponse, None], None, ),  # 1
+    (2, TType.STRUCT, 'smart_contract_result', [Variant, None], None, ),  # 2
     (3, TType.I32, 'roundNum', None, None, ),  # 3
     (4, TType.STRUCT, 'id', [TransactionId, None], None, ),  # 4
-    (5, TType.STRUCT, 'fee', [general.ttypes.Amount, None], None, ),  # 5
+    (5, TType.STRUCT, 'fee', [Amount, None], None, ),  # 5
     (6, TType.LIST, 'extraFee', (TType.STRUCT, [ExtraFee, None], False), None, ),  # 6
 )
 all_structs.append(SingleTokenQuery)
@@ -6830,13 +6832,13 @@ PublicKeyTransactions.thrift_spec = (
 all_structs.append(FilteredTransactionsListResult)
 FilteredTransactionsListResult.thrift_spec = (
     None,  # 0
-    (1, TType.STRUCT, 'status', [general.ttypes.APIResponse, None], None, ),  # 1
+    (1, TType.STRUCT, 'status', [APIResponse, None], None, ),  # 1
     (2, TType.LIST, 'queryResponse', (TType.STRUCT, [PublicKeyTransactions, None], False), None, ),  # 2
 )
 all_structs.append(PoolListGetResult)
 PoolListGetResult.thrift_spec = (
     None,  # 0
-    (1, TType.STRUCT, 'status', [general.ttypes.APIResponse, None], None, ),  # 1
+    (1, TType.STRUCT, 'status', [APIResponse, None], None, ),  # 1
     (2, TType.BOOL, 'result', None, None, ),  # 2
     (3, TType.I32, 'count', None, None, ),  # 3
     (4, TType.LIST, 'pools', (TType.STRUCT, [Pool, None], False), None, ),  # 4
@@ -6844,61 +6846,61 @@ PoolListGetResult.thrift_spec = (
 all_structs.append(PoolInfoGetResult)
 PoolInfoGetResult.thrift_spec = (
     None,  # 0
-    (1, TType.STRUCT, 'status', [general.ttypes.APIResponse, None], None, ),  # 1
+    (1, TType.STRUCT, 'status', [APIResponse, None], None, ),  # 1
     (2, TType.BOOL, 'isFound', None, None, ),  # 2
     (3, TType.STRUCT, 'pool', [Pool, None], None, ),  # 3
 )
 all_structs.append(PoolTransactionsGetResult)
 PoolTransactionsGetResult.thrift_spec = (
     None,  # 0
-    (1, TType.STRUCT, 'status', [general.ttypes.APIResponse, None], None, ),  # 1
+    (1, TType.STRUCT, 'status', [APIResponse, None], None, ),  # 1
     (2, TType.LIST, 'transactions', (TType.STRUCT, [SealedTransaction, None], False), None, ),  # 2
 )
 all_structs.append(StatsGetResult)
 StatsGetResult.thrift_spec = (
     None,  # 0
-    (1, TType.STRUCT, 'status', [general.ttypes.APIResponse, None], None, ),  # 1
+    (1, TType.STRUCT, 'status', [APIResponse, None], None, ),  # 1
     (2, TType.LIST, 'stats', (TType.STRUCT, [PeriodStats, None], False), None, ),  # 2
 )
 all_structs.append(SmartContractGetResult)
 SmartContractGetResult.thrift_spec = (
     None,  # 0
-    (1, TType.STRUCT, 'status', [general.ttypes.APIResponse, None], None, ),  # 1
+    (1, TType.STRUCT, 'status', [APIResponse, None], None, ),  # 1
     (2, TType.STRUCT, 'smartContract', [SmartContract, None], None, ),  # 2
 )
 all_structs.append(SmartContractAddressesListGetResult)
 SmartContractAddressesListGetResult.thrift_spec = (
     None,  # 0
-    (1, TType.STRUCT, 'status', [general.ttypes.APIResponse, None], None, ),  # 1
+    (1, TType.STRUCT, 'status', [APIResponse, None], None, ),  # 1
     (2, TType.LIST, 'addressesList', (TType.STRING, 'BINARY', False), None, ),  # 2
 )
 all_structs.append(SmartContractsListGetResult)
 SmartContractsListGetResult.thrift_spec = (
     None,  # 0
-    (1, TType.STRUCT, 'status', [general.ttypes.APIResponse, None], None, ),  # 1
+    (1, TType.STRUCT, 'status', [APIResponse, None], None, ),  # 1
     (2, TType.I32, 'count', None, None, ),  # 2
     (3, TType.LIST, 'smartContractsList', (TType.STRUCT, [SmartContract, None], False), None, ),  # 3
 )
 all_structs.append(TransactionsStateGetResult)
 TransactionsStateGetResult.thrift_spec = (
     None,  # 0
-    (1, TType.STRUCT, 'status', [general.ttypes.APIResponse, None], None, ),  # 1
+    (1, TType.STRUCT, 'status', [APIResponse, None], None, ),  # 1
     (2, TType.MAP, 'states', (TType.I64, None, TType.I32, None, False), None, ),  # 2
     (3, TType.I32, 'roundNum', None, None, ),  # 3
 )
 all_structs.append(SmartMethodParamsGetResult)
 SmartMethodParamsGetResult.thrift_spec = (
     None,  # 0
-    (1, TType.STRUCT, 'status', [general.ttypes.APIResponse, None], None, ),  # 1
+    (1, TType.STRUCT, 'status', [APIResponse, None], None, ),  # 1
     (2, TType.STRING, 'method', 'UTF8', None, ),  # 2
-    (3, TType.LIST, 'params', (TType.STRUCT, [general.ttypes.Variant, None], False), None, ),  # 3
+    (3, TType.LIST, 'params', (TType.STRUCT, [Variant, None], False), None, ),  # 3
 )
 all_structs.append(ContractAllMethodsGetResult)
 ContractAllMethodsGetResult.thrift_spec = (
     None,  # 0
     (1, TType.BYTE, 'code', None, None, ),  # 1
     (2, TType.STRING, 'message', 'UTF8', None, ),  # 2
-    (3, TType.LIST, 'methods', (TType.STRUCT, [general.ttypes.MethodDescription, None], False), None, ),  # 3
+    (3, TType.LIST, 'methods', (TType.STRUCT, [MethodDescription, None], False), None, ),  # 3
 )
 all_structs.append(SmartContractMethodArgument)
 SmartContractMethodArgument.thrift_spec = (
@@ -6916,15 +6918,15 @@ SmartContractMethod.thrift_spec = (
 all_structs.append(SmartContractDataResult)
 SmartContractDataResult.thrift_spec = (
     None,  # 0
-    (1, TType.STRUCT, 'status', [general.ttypes.APIResponse, None], None, ),  # 1
+    (1, TType.STRUCT, 'status', [APIResponse, None], None, ),  # 1
     (2, TType.LIST, 'methods', (TType.STRUCT, [SmartContractMethod, None], False), None, ),  # 2
-    (3, TType.MAP, 'variables', (TType.STRING, 'UTF8', TType.STRUCT, [general.ttypes.Variant, None], False), None, ),  # 3
+    (3, TType.MAP, 'variables', (TType.STRING, 'UTF8', TType.STRUCT, [Variant, None], False), None, ),  # 3
 )
 all_structs.append(SmartContractCompileResult)
 SmartContractCompileResult.thrift_spec = (
     None,  # 0
-    (1, TType.STRUCT, 'status', [general.ttypes.APIResponse, None], None, ),  # 1
-    (2, TType.LIST, 'byteCodeObjects', (TType.STRUCT, [general.ttypes.ByteCodeObject, None], False), None, ),  # 2
+    (1, TType.STRUCT, 'status', [APIResponse, None], None, ),  # 1
+    (2, TType.LIST, 'byteCodeObjects', (TType.STRUCT, [ByteCodeObject, None], False), None, ),  # 2
     (3, TType.I32, 'tokenStandard', None, None, ),  # 3
 )
 all_structs.append(TokenInfo)
@@ -6948,7 +6950,7 @@ TokenTransaction.thrift_spec = (
     (3, TType.I64, 'time', None, None, ),  # 3
     (4, TType.STRING, 'initiator', 'BINARY', None, ),  # 4
     (5, TType.STRING, 'method', 'UTF8', None, ),  # 5
-    (6, TType.LIST, 'params', (TType.STRUCT, [general.ttypes.Variant, None], False), None, ),  # 6
+    (6, TType.LIST, 'params', (TType.STRUCT, [Variant, None], False), None, ),  # 6
     (7, TType.I32, 'state', None, None, ),  # 7
 )
 all_structs.append(TokenHolder)
@@ -6970,7 +6972,7 @@ TokenBalance.thrift_spec = (
 all_structs.append(TokenBalancesResult)
 TokenBalancesResult.thrift_spec = (
     None,  # 0
-    (1, TType.STRUCT, 'status', [general.ttypes.APIResponse, None], None, ),  # 1
+    (1, TType.STRUCT, 'status', [APIResponse, None], None, ),  # 1
     (2, TType.LIST, 'balances', (TType.STRUCT, [TokenBalance, None], False), None, ),  # 2
 )
 all_structs.append(TokenTransfer)
@@ -6994,34 +6996,34 @@ TokenTransfer.thrift_spec = (
 all_structs.append(TokenTransfersResult)
 TokenTransfersResult.thrift_spec = (
     None,  # 0
-    (1, TType.STRUCT, 'status', [general.ttypes.APIResponse, None], None, ),  # 1
+    (1, TType.STRUCT, 'status', [APIResponse, None], None, ),  # 1
     (2, TType.I32, 'count', None, None, ),  # 2
     (3, TType.LIST, 'transfers', (TType.STRUCT, [TokenTransfer, None], False), None, ),  # 3
 )
 all_structs.append(TokenTransactionsResult)
 TokenTransactionsResult.thrift_spec = (
     None,  # 0
-    (1, TType.STRUCT, 'status', [general.ttypes.APIResponse, None], None, ),  # 1
+    (1, TType.STRUCT, 'status', [APIResponse, None], None, ),  # 1
     (2, TType.I32, 'count', None, None, ),  # 2
     (3, TType.LIST, 'transactions', (TType.STRUCT, [TokenTransaction, None], False), None, ),  # 3
 )
 all_structs.append(TokenInfoResult)
 TokenInfoResult.thrift_spec = (
     None,  # 0
-    (1, TType.STRUCT, 'status', [general.ttypes.APIResponse, None], None, ),  # 1
+    (1, TType.STRUCT, 'status', [APIResponse, None], None, ),  # 1
     (2, TType.STRUCT, 'token', [TokenInfo, None], None, ),  # 2
 )
 all_structs.append(TokenHoldersResult)
 TokenHoldersResult.thrift_spec = (
     None,  # 0
-    (1, TType.STRUCT, 'status', [general.ttypes.APIResponse, None], None, ),  # 1
+    (1, TType.STRUCT, 'status', [APIResponse, None], None, ),  # 1
     (2, TType.I32, 'count', None, None, ),  # 2
     (3, TType.LIST, 'holders', (TType.STRUCT, [TokenHolder, None], False), None, ),  # 3
 )
 all_structs.append(TokensListResult)
 TokensListResult.thrift_spec = (
     None,  # 0
-    (1, TType.STRUCT, 'status', [general.ttypes.APIResponse, None], None, ),  # 1
+    (1, TType.STRUCT, 'status', [APIResponse, None], None, ),  # 1
     (2, TType.I32, 'count', None, None, ),  # 2
     (3, TType.LIST, 'tokens', (TType.STRUCT, [TokenInfo, None], False), None, ),  # 3
 )
@@ -7029,7 +7031,7 @@ all_structs.append(WalletInfo)
 WalletInfo.thrift_spec = (
     None,  # 0
     (1, TType.STRING, 'address', 'BINARY', None, ),  # 1
-    (2, TType.STRUCT, 'balance', [general.ttypes.Amount, None], None, ),  # 2
+    (2, TType.STRUCT, 'balance', [Amount, None], None, ),  # 2
     (3, TType.I64, 'transactionsNumber', None, None, ),  # 3
     (4, TType.I64, 'firstTransactionTime', None, None, ),  # 4
     (5, TType.STRUCT, 'delegated', [Delegated, None], None, ),  # 5
@@ -7042,7 +7044,7 @@ ActualFeeGetResult.thrift_spec = (
 all_structs.append(WalletsGetResult)
 WalletsGetResult.thrift_spec = (
     None,  # 0
-    (1, TType.STRUCT, 'status', [general.ttypes.APIResponse, None], None, ),  # 1
+    (1, TType.STRUCT, 'status', [APIResponse, None], None, ),  # 1
     (2, TType.I32, 'count', None, None, ),  # 2
     (3, TType.LIST, 'wallets', (TType.STRUCT, [WalletInfo, None], False), None, ),  # 3
 )
@@ -7052,26 +7054,26 @@ TrustedInfo.thrift_spec = (
     (1, TType.STRING, 'address', 'BINARY', None, ),  # 1
     (2, TType.I32, 'timesWriter', None, None, ),  # 2
     (3, TType.I32, 'timesTrusted', None, None, ),  # 3
-    (4, TType.STRUCT, 'feeCollected', [general.ttypes.Amount, None], None, ),  # 4
+    (4, TType.STRUCT, 'feeCollected', [Amount, None], None, ),  # 4
 )
 all_structs.append(TrustedGetResult)
 TrustedGetResult.thrift_spec = (
     None,  # 0
-    (1, TType.STRUCT, 'status', [general.ttypes.APIResponse, None], None, ),  # 1
+    (1, TType.STRUCT, 'status', [APIResponse, None], None, ),  # 1
     (2, TType.I32, 'pages', None, None, ),  # 2
     (3, TType.LIST, 'writers', (TType.STRUCT, [TrustedInfo, None], False), None, ),  # 3
 )
 all_structs.append(SyncStateResult)
 SyncStateResult.thrift_spec = (
     None,  # 0
-    (1, TType.STRUCT, 'status', [general.ttypes.APIResponse, None], None, ),  # 1
+    (1, TType.STRUCT, 'status', [APIResponse, None], None, ),  # 1
     (2, TType.I64, 'currRound', None, None, ),  # 2
     (3, TType.I64, 'lastBlock', None, None, ),  # 3
 )
 all_structs.append(ExecuteCountGetResult)
 ExecuteCountGetResult.thrift_spec = (
     None,  # 0
-    (1, TType.STRUCT, 'status', [general.ttypes.APIResponse, None], None, ),  # 1
+    (1, TType.STRUCT, 'status', [APIResponse, None], None, ),  # 1
     (2, TType.I64, 'executeCount', None, None, ),  # 2
 )
 all_structs.append(TokenFilters)

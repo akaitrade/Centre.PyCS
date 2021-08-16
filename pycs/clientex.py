@@ -6,8 +6,8 @@ import ed25519
 from thrift.protocol.TBinaryProtocol import TBinaryProtocol
 from thrift.transport.TSocket import TSocket
 
-from api.API import Client, Transaction, AmountCommission, SmartContractInvocation, SmartContractDeploy
-from general.ttypes import Amount, ByteCodeObject
+from pycs.api.API import Client, Transaction, AmountCommission, SmartContractInvocation, SmartContractDeploy
+from pycs.general.ttypes import Amount, ByteCodeObject
 
 
 class ClientEx:

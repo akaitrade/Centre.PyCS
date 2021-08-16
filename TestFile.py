@@ -1,6 +1,6 @@
-from Connector import Connector
-from general.ttypes import Amount, ByteCodeObject
-from api.ttypes import TransactionId, TokenHoldersSortField, TokensListSortField, TokenFilters
+from pycs.Connector import Connector
+from pycs.general.ttypes import Amount, ByteCodeObject
+from pycs.api.ttypes import TransactionId, TokenHoldersSortField, TokensListSortField, TokenFilters
 def main():
     TrustedGet()
 

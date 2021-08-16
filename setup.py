@@ -13,11 +13,19 @@ setuptools.setup(
      long_description=long_description,
      long_description_content_type="text/markdown",
      url="https://github.com/akaitrade/Centre.PyCS",
-     packages=setuptools.find_packages(include=['Connector', 'Connector.*']),
+     packages=[
+              'pycs',
+              'pycs.api',
+              'pycs.apidiag',
+              'pycs.general',
+          ],
+    package_dir={'pycs': 'pycs'},
+     entry_points={
+        'console_scripts': ['my-command=pycs.Connector:main']
+    },
      classifiers=[
          "Programming Language :: Python :: 3",
          "License :: OSI Approved :: MIT License",
          "Operating System :: OS Independent",
-         'Programming Language :: Python :: 3',
      ],
  )

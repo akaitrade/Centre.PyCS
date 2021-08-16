@@ -5675,7 +5675,7 @@ class ContractAllMethodsGet_args(object):
                     self.byteCodeObjects = []
                     (_etype289, _size286) = iprot.readListBegin()
                     for _i290 in range(_size286):
-                        _elem291 = general.ttypes.ByteCodeObject()
+                        _elem291 = ByteCodeObject()
                         _elem291.read(iprot)
                         self.byteCodeObjects.append(_elem291)
                     iprot.readListEnd()
@@ -5717,7 +5717,7 @@ class ContractAllMethodsGet_args(object):
 all_structs.append(ContractAllMethodsGet_args)
 ContractAllMethodsGet_args.thrift_spec = (
     None,  # 0
-    (1, TType.LIST, 'byteCodeObjects', (TType.STRUCT, [general.ttypes.ByteCodeObject, None], False), None, ),  # 1
+    (1, TType.LIST, 'byteCodeObjects', (TType.STRUCT, [ByteCodeObject, None], False), None, ),  # 1
 )
 
 

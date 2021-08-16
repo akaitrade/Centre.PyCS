@@ -1,10 +1,13 @@
-from api.ttypes import Transaction, TransactionId
+#from api.API import Transaction, TransactionId
+from pycs.api.API import Transaction, TransactionId
 import sys
-from keys import Keys
-from clientex import ClientEx
+from pycs.keys import Keys
+from pycs.clientex import ClientEx
 import base58check
-
-import keys
+#import keys
+#from .api.API import Transaction, TransactionId
+#from .keys import Keys
+#from .clientex import ClientEx
 
 
 
@@ -617,7 +620,6 @@ class Connector(object):
             return ClientEx(self.ip.split(':')).TrustedGet(Page)
         except Exception as e:
             raise e
-
 
 
 
