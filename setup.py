@@ -9,6 +9,7 @@ setuptools.setup(
      version='0.1',
      author="BK",
      author_email="basknappers@gmail.com",
+     download_url = 'https://github.com/akaitrade/Centre.PyCS/archive/refs/tags/0.1.0-Beta.tar.gz', 
      description="Credits Blockchain Implementation in Python",
      long_description=long_description,
      long_description_content_type="text/markdown",
@@ -19,6 +20,11 @@ setuptools.setup(
               'pycs.apidiag',
               'pycs.general',
           ],
+    install_requires=[
+          'ed25519',
+          'thrift',
+          'base58check',
+      ],
     package_dir={'pycs': 'pycs'},
      entry_points={
         'console_scripts': ['my-command=pycs.Connector:main']
