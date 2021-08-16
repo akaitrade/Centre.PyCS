@@ -106,10 +106,10 @@ class ClientEx:
         return self.client.TokenHoldersGet(token,order,desc,offset,limit)
 
     def TokensListGet(self,order,filters,desc,offset,limit):
-        return self.client.TokensListGet(order,filters,desc,offset,limit)
+        return self.client.TokensListGet(offset,limit, order,desc,filters)
 
     def WalletsGet(self,ordcol,desc,offset,limit):
-        return self.client.WalletsGet(ordcol,desc,offset,limit)
+        return self.client.WalletsGet(offset,limit,ordcol,desc)
 
     def TrustedGet(self,page):
         return self.client.TrustedGet(page)

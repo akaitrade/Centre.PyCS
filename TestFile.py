@@ -1,7 +1,8 @@
 from Connector import Connector
-
+from general.ttypes import Amount, ByteCodeObject
+from api.ttypes import TransactionId, TokenHoldersSortField, TokensListSortField, TokenFilters
 def main():
-    SmartContractsListGet()
+    TrustedGet()
 
 def TestTransactionGet():
     Connect_ =  Connector("165.22.212.253:9090")
@@ -69,12 +70,67 @@ def SmartContractsListGet():
 
 def TransactionsStateGet():
     Connect_ =  Connector("165.22.212.253:9090")
-    print(Connect_.TransactionsStateGet("EoPibFsGPE4xqXH2tYTBQUeJqSMMFvCZUdqAW9Bnh3nd",0,10))
+    print(Connect_.TransactionsStateGet("EoPibFsGPE4xqXH2tYTBQUeJqSMMFvCZUdqAW9Bnh3nd",None))
 
 def ContractAllMethodsGet():
     Connect_ =  Connector("165.22.212.253:9090")
-    print(Connect_.ContractAllMethodsGet("EoPibFsGPE4xqXH2tYTBQUeJqSMMFvCZUdqAW9Bnh3nd",0,10))
+    t = Connect_.SmartContractGet("12DHXQ8rzYUawD6VSD6WuVaTQ4uen7fStWsTmZASnDv1")
+    print(Connect_.ContractAllMethodsGet(t.smartContract.smartContractDeploy.byteCodeObjects))
 
+def SmartMethodParamsGet():
+    Connect_ =  Connector("165.22.212.253:9090")
+    print(Connect_.SmartMethodParamsGet("EoPibFsGPE4xqXH2tYTBQUeJqSMMFvCZUdqAW9Bnh3nd",1))
+
+def SmartContractDataGet():
+    Connect_ =  Connector("165.22.212.253:9090")
+    print(Connect_.SmartContractDataGet("12DHXQ8rzYUawD6VSD6WuVaTQ4uen7fStWsTmZASnDv1"))
+
+def SmartContractCompile():
+    Connect_ =  Connector("165.22.212.253:9090")
+    print(Connect_.SmartContractCompile("import com.credits.scapi.annotations.*; import com.credits.scapi.v0.*; public class MySmartContract extends SmartContract { public MySmartContract() {} public String hello2(String say) { return \"Hello\" + say; } }"))
+
+def TokenBalancesGet():
+    Connect_ =  Connector("165.22.212.253:9090")
+    print(Connect_.TokenBalancesGet("4SFfA1S2xfA3BdgkTn2tK14yDhLuD11RVz78kqx35jct"))
+
+def TokenTransfersGet():
+    Connect_ =  Connector("165.22.212.253:9090")
+    print(Connect_.TokenTransfersGet("4SFfA1S2xfA3BdgkTn2tK14yDhLuD11RVz78kqx35jct",0,10))
+
+def TokenTransferGet():
+    Connect_ =  Connector("165.22.212.253:9090")
+    txsid = TransactionId()
+    txsid.poolSeq = 5000
+    txsid.index = 1
+    print(Connect_.TokenTransferGet("4SFfA1S2xfA3BdgkTn2tK14yDhLuD11RVz78kqx35jct",txsid))
+
+def TokenTransfersListGet():
+    Connect_ =  Connector("165.22.212.253:9090")
+    print(Connect_.TokenTransfersListGet(0,10))
+
+def TokenWalletTransfersGet():
+    Connect_ =  Connector("165.22.212.253:9090")
+    print(Connect_.TokenWalletTransfersGet("12DHXQ8rzYUawD6VSD6WuVaTQ4uen7fStWsTmZASnDv1","12DHXQ8rzYUawD6VSD6WuVaTQ4uen7fStWsTmZASnDv1",0,10))
+
+def TokenInfoGet():
+    Connect_ =  Connector("165.22.212.253:9090")
+    print(Connect_.TokenInfoGet("13T1JhxF614ZKT6L2Kh8wtpE5xoZLGdFxnXbFiWKFih1"))
+
+def TokenHoldersGet():
+    Connect_ =  Connector("165.22.212.253:9090")
+    print(Connect_.TokenHoldersGet("4SFfA1S2xfA3BdgkTn2tK14yDhLuD11RVz78kqx35jct", TokenHoldersSortField.TH_Balance, True,0 ,10))
     
+def TokensListGet():
+    Connect_ =  Connector("165.22.212.253:9090")
+    Ftr = TokenFilters()
+    print(Connect_.TokensListGet(TokensListSortField.TL_HoldersCount,Ftr,True,0,10))
+
+def WalletsGet():
+    Connect_ =  Connector("165.22.212.253:9090")
+    print(Connect_.WalletsGet(0,10,None,True))
+
+def TrustedGet():
+    Connect_ =  Connector("165.22.212.253:9090")
+    print(Connect_.TrustedGet(0))
 
 main()
