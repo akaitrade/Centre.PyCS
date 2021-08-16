@@ -44,8 +44,8 @@ Sending Transaction
 --
 In the next example we are going to send an transaction with the native currency CS
 ```csharp
-var connect_ = new Connector("95.111.224.219", 9091);
-Console.WriteLine(connect_.SendTransaction(1, 0, "Enter Sender Publickey", "Enter Sender Privatekey", "Enter Receiver Publickey"));
+connect_ = new Connector("95.111.224.219:9091");
+Print(connect_.SendTransaction(1, 0, "Enter Sender Publickey", "Enter Sender Privatekey", "Enter Receiver Publickey"));
 ```
 Well look at that ! You now sended an transaction on the Credits Blockchain great job ;)
 
