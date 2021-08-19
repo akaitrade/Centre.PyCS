@@ -230,6 +230,7 @@ class ClientEx:
     def deploy_smart_contract(self, code, fee, keys):
         res = self.client.TransactionFlow(self.create_transaction_with_smart_contract(code,fee,keys))
         print(res)
+
     def createContractAddress(self, source, tId, contract):
         tmpBytes = bytearray()
         tmpBytes.extend(source)
@@ -251,6 +252,7 @@ class ClientEx:
             return None
         res = self.client.SmartContractCompile(contract_body)
         return res   
+        
     def create_transaction_with_smart_contract(self, code, fee, keys):
         tr = Transaction()
         contract = SmartContractInvocation()
@@ -268,7 +270,7 @@ class ClientEx:
             return
         tr.smartContract = contract
         tr.smartContract.smartContractDeploy.sourceCode = contractText
-        tr.source = base58check.b58decode(keys.public_key)
+        tr.source = keys.public_key_bytes
         w = client.WalletTransactionsCountGet(tr.source)
         lastInnerId = bytearray((w.lastTransactionInnerId + 1).to_bytes(6,'little'))
         tr.id = int.from_bytes(lastInnerId,byteorder='little', signed=False)
@@ -302,8 +304,6 @@ class ClientEx:
         protocolOut = TBinaryProtocol(transportOut)
         contract.write(protocolOut)
         scBytes = transportOut.getvalue()
-
-        print(str(len(scBytes)))
         sMap = '=6s32s32slqhb1s4s' + str(len(scBytes)) +'s' #4s' + str(scriptLength) + 's4s' + str(codeNameLength) + 's4s' + str(codeLength) + 's' #len(userField_bytes)
         serial_transaction_for_sign = pack(sMap,  #'=' - without alignment
                             lastInnerId,     #6s - 6 byte InnerID (char[] C Type)
@@ -318,10 +318,7 @@ class ClientEx:
                             scBytes
                             )            
                         
-
-        # print('Serialized transaction: ', serial_transaction_for_sign.hex().upper())
-        senderPKey =  base58check.b58decode(keys.private_key)
-        signing_key = ed25519.SigningKey(senderPKey) # Create object for calulate signing
+        signing_key = ed25519.SigningKey(keys.private_key_bytes) # Create object for calulate signing
         tr.signature = signing_key.sign(serial_transaction_for_sign)
         return tr
 
