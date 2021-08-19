@@ -121,7 +121,28 @@ class Connector(object):
             return ClientEx(self.ip.split(':')).TransactionsGet(base58check.b58decode(PubKey),Offset,Index)
         except Exception as e:
             raise e
+    def DeploySmart(self,smcode,PublicKey,PrivateKey,Target):
+        """Description of SendTransaction
 
+            Parameters:
+            Integeral (int): Amount before the .
+            fraction (int): Amount after the .
+            fee (int): Amount fee as maximum
+            PublicKey (string): PublicKey 
+            PrivateKey (string): PrivateKey
+            Target (string): Target Address
+            UserData(byte[]) Optional
+            TxsID(int) Optional
+            Transaction(Transaction) Optional
+            Returns:
+            Object:TransactionFlowResult
+
+            Detailed Documentation
+
+            https://centr.gitbook.io/netcs/
+            """
+        keys_ = Keys(PublicKey,PrivateKey,Target)
+        return ClientEx(self.ip.split(':')).deploy_smart_contract("",1.0,keys_)
     def SendTransaction(self,Integeral,fraction,fee,PublicKey,PrivateKey,Target,UserData=None,TxsID=0,Transaction = None):
         """Description of SendTransaction
 
@@ -143,10 +164,7 @@ class Connector(object):
             https://centr.gitbook.io/netcs/
             """
         try: 
-            keys_ = Keys()
-            keys_.public_key = PublicKey
-            keys_.private_key = PrivateKey
-            keys_.target_public_key = Target
+            keys_ = Keys(PublicKey,PrivateKey,Target)
             if(TxsID == 0):
                 TxsID = ClientEx(self.ip.split(':')).WalletTransactionsCountGet(keys_.public_key_bytes).lastTransactionInnerId + 1
             return ClientEx(self.ip.split(':')).transfer_coins(Integeral,fraction,fee,keys_,UserData,TxsID,Transaction)

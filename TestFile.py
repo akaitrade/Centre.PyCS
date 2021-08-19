@@ -2,7 +2,7 @@ from pycs.Connector import Connector
 from pycs.general.ttypes import Amount, ByteCodeObject
 from pycs.api.ttypes import TransactionId, TokenHoldersSortField, TokensListSortField, TokenFilters
 def main():
-    TestTransactionsGet()
+    DeploySmart()
 
 def TestTransactionGet():
     Connect_ =  Connector("165.22.212.253:9090")
@@ -13,7 +13,7 @@ def WalletGetBalance():
     print(Connect_.WalletGetBalance("ACkyon3ERkNEcNwpjUn4S6TLP3L76LFg3X6kWoJx82dK"))
 
 def WalletTransactionsCountGet():
-    Connect_ =  Connector("165.22.212.253:9090")
+    Connect_ =  Connector("194.163.152.177:9091")
     print(Connect_.WalletTransactionsCountGet("ACkyon3ERkNEcNwpjUn4S6TLP3L76LFg3X6kWoJx82dK"))
 
 def WalletDataGet():
@@ -132,5 +132,13 @@ def WalletsGet():
 def TrustedGet():
     Connect_ =  Connector("165.22.212.253:9090")
     print(Connect_.TrustedGet(0))
+
+def SendTransaction():
+    Connect_ =  Connector("194.163.152.177:9091")
+    print(Connect_.SendTransaction(0,0,0.1,"5B3YXqDTcWQFGAqEJQJP3Bg1ZK8FFtHtgCiFLT5VAxpe","3rUevsW5xfob6qDxWMDFwwTQCq39SYhzstuyfUGSDvF2QHBRyPD8fSk49wFXaPk3GztfxtuU85QHfMV3ozfqa7rN","7TAp6BWBMJ3Ep6Wayu1TSApXifBFVAoZtCx6fALjo4At"))
+
+def DeploySmart():
+    Connect_ =  Connector("194.163.152.177:9091")
+    print(Connect_.DeploySmart("","5B3YXqDTcWQFGAqEJQJP3Bg1ZK8FFtHtgCiFLT5VAxpe","3rUevsW5xfob6qDxWMDFwwTQCq39SYhzstuyfUGSDvF2QHBRyPD8fSk49wFXaPk3GztfxtuU85QHfMV3ozfqa7rN","7TAp6BWBMJ3Ep6Wayu1TSApXifBFVAoZtCx6fALjo4At"))
 
 main()
