@@ -264,14 +264,10 @@ class ClientEx:
         contractText = self.normalizeCode(code)
         result = self.compile_smart(contractText)
         contract.smartContractDeploy.byteCodeObjects = result.byteCodeObjects
-        sUserFields = bytearray()
-        client = self.client
-        if client == None:
-            return
         tr.smartContract = contract
         tr.smartContract.smartContractDeploy.sourceCode = contractText
         tr.source = keys.public_key_bytes
-        w = client.WalletTransactionsCountGet(tr.source)
+        w = self.client.WalletTransactionsCountGet(tr.source)
         lastInnerId = bytearray((w.lastTransactionInnerId + 1).to_bytes(6,'little'))
         tr.id = int.from_bytes(lastInnerId,byteorder='little', signed=False)
         tr.target = self.createContractAddress(tr.source, lastInnerId, contract)
@@ -285,15 +281,7 @@ class ClientEx:
         tr.fee = AmountCommission()
         tr.fee.commission = self.double_to_fee(fee)
         tr.userFields = ""
-        userField_bytes = bytearray()
-        ms = int(0)
         ufNum1 = bytearray(b'\x01')
-        if len(userField_bytes) == 0:
-            sUserFields.append(0)
-        codeLength = len(contract.smartContractDeploy.byteCodeObjects[0].byteCode)
-        codeNameLength = len(contract.smartContractDeploy.byteCodeObjects[0].name)
-        scriptLength = len(contract.smartContractDeploy.sourceCode)
-        ufLength = codeLength + codeNameLength + scriptLength
         contract.smartContractDeploy.hashState = ""
         contract.smartContractDeploy.tokenStandard = 0
         contract.method = ""
@@ -316,8 +304,7 @@ class ClientEx:
                             ufNum1,
                             bytes(len(scBytes).to_bytes(4, byteorder="little")),
                             scBytes
-                            )            
-                        
+                            )                     
         signing_key = ed25519.SigningKey(keys.private_key_bytes) # Create object for calulate signing
         tr.signature = signing_key.sign(serial_transaction_for_sign)
         return tr
