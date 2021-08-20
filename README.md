@@ -3,6 +3,7 @@
 Third Party Library for implementing Credits Blockchain in Python
 
 ## Installation of PIP
+https://pypi.org/project/Centre.PyCS/
 ```
 pm> pip install Centr.PyCS 
 ```
